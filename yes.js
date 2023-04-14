@@ -2,6 +2,7 @@ const canvas = document.getElementById("drawing-canvas");
 const ctx = canvas.getContext("2d");
 const imageContainer = document.getElementById("image-container");
 const tileSize = 50;
+erase = false;
 
 const images = [
     "/assets/tiles/tile001.png",
@@ -158,6 +159,9 @@ images.forEach((image) => {
 canvas.addEventListener("click", (event) => {
   const x = Math.floor(event.offsetX / tileSize) * tileSize;
   const y = Math.floor(event.offsetY / tileSize) * tileSize;
+  if (erase) { //on ne pose pas d'image, on efface
+    ctx.clearRect(x, y, tileSize, tileSize);
+  }
   if(selectedImage) {
     const image = new Image();
     image.src = selectedImage;
@@ -171,5 +175,12 @@ canvas.addEventListener("click", (event) => {
 function clearButton() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
+
+function eraserButton() {
+  //on décharge l'image sélectionnée
+  selectedImage = null;
+  erase = true;
+}
+
 
 
