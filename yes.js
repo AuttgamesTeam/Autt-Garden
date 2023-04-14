@@ -4,6 +4,7 @@ const imageContainer = document.getElementById("image-container");
 const tileSize = 40;
 erase = false;
 
+
 const images = [
     "/assets/tiles/tile001.png",
     "/assets/tiles/tile002.png",
@@ -162,6 +163,7 @@ canvas.addEventListener("click", (event) => {
   if (erase) { //on ne pose pas d'image, on efface
     ctx.clearRect(x, y, tileSize, tileSize);
   }
+
   if(selectedImage) {
     const image = new Image();
     image.src = selectedImage;
@@ -190,6 +192,5 @@ function eraserButton() {
   document.getElementById("eraser").style.backgroundColor = "red";
   }
 }
-
 
 
