@@ -158,17 +158,18 @@ images.forEach((image) => {
 canvas.addEventListener("click", (event) => {
   const x = Math.floor(event.offsetX / tileSize) * tileSize;
   const y = Math.floor(event.offsetY / tileSize) * tileSize;
-  if (selectedImage) {
+  if(selectedImage) {
     const image = new Image();
     image.src = selectedImage;
     image.onload = () => {
       ctx.drawImage(image, x, y, tileSize, tileSize);
     };
   }
-  window.oncontextmenu = (e) => {
-    e.preventDefault()
-    console.log('right clicked')
-  }
 });
+
+//on met les fonctions des boutons ici
+function clearButton() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
 
 
