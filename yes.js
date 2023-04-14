@@ -173,7 +173,10 @@ canvas.addEventListener("click", (event) => {
 
 //on met les fonctions des boutons ici
 function clearButton() {
+  //on demande confirmation
+  if (confirm("Voulez-vous vraiment tout effacer ?")) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
 }
 
 function eraserButton() {
