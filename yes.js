@@ -180,9 +180,15 @@ function clearButton() {
 }
 
 function eraserButton() {
-  //on décharge l'image sélectionnée
+  if(erase) { //si on est déjà en mode gomme, on désactive
+    erase = false;
+    //on remet la couleur du bouton à la normale
+    document.getElementById("eraser").style.backgroundColor = "white";
+  } else { //sinon on active le mode gomme
   selectedImage = null;
   erase = true;
+  document.getElementById("eraser").style.backgroundColor = "red";
+  }
 }
 
 

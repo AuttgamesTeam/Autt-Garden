@@ -13,6 +13,14 @@ body{
   padding: 10px;
 }
 
+#clear{
+  background-color: white;
+}
+
+#eraser{
+  background-color: white;
+}
+
 #drawing-canvas {
     display: flex;
     justify-content: center;
