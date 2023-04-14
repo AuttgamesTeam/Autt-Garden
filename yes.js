@@ -1,7 +1,7 @@
 const canvas = document.getElementById("drawing-canvas");
 const ctx = canvas.getContext("2d");
 const imageContainer = document.getElementById("image-container");
-const tileSize = 50;
+const tileSize = 40;
 erase = false;
 
 const images = [
