@@ -4,6 +4,7 @@ const imageContainer = document.getElementById("image-container");
 const divGrass = document.getElementById("grass");
 const divWater = document.getElementById("water");
 const divCliff = document.getElementById("cliff");
+const divFlowers = document.getElementById("flower");
 const sc = document.getElementsByClassName("s-container");
 
 
@@ -145,8 +146,17 @@ const images = [
     "/assets/tiles/tile146.png",
     "/assets/tiles/tile147.png",
     "/assets/tiles/tile148.png",
-
+    "/assets/tiles/pink-flowers.png",
+    "/assets/tiles/solo-pink-flower.png",
+    "/assets/tiles/tulips.png",
+    "/assets/tiles/d-yellow.png",
+    "/assets/tiles/yellow.png",
+    "/assets/tiles/rose.png",
+    "/assets/tiles/sakura.png",
+    "/assets/tiles/giphy.gif",
+    
 ];
+
 
 let selectedImage;
 
@@ -167,9 +177,12 @@ images.forEach((image) => {
     divGrass.appendChild(img);
   } else if (currentImage < 99) { //on met dans le span water
     divWater.appendChild(img);
-  } else if (currentImage < 168) { //on met dans le span cliff
+  } else if (currentImage < 131) { //on met dans le span cliff
     divCliff.appendChild(img);
   }  
+  else if (currentImage < 222) { //on met dans le span cliff
+    divFlowers.appendChild(img);
+  }
 });
 
 canvas.addEventListener("click", (event) => {
