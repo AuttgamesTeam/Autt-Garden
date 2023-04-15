@@ -13,23 +13,19 @@ body{
 .left{  
   float: left;
   margin-left: 4%;
+  margin-right: 7%;
   margin-top: 13%;
   border : 2px solid white;
   padding: 10px;
- 
+  justify-content: center;
+  text-align: center;
+  box-shadow: 13px 20px 36px 3px rgba(144, 200, 172, 0.7);
+-webkit-box-shadow: 13px 20px 36px 3px rgba(144, 200, 172, 0.7);
+-moz-box-shadow: 13px 20px 36px 3px rgba(144, 200, 172, 0.7);
 }
 
 .help{
-
-  float: left;
-  margin-left: 3%;
-  margin-right: 3%;
-  margin-top: 12%;
   font-size: small;
-  margin-bottom: auto;
-  justify-content: center;
-  text-align: center;
-  padding: 8px;
 }
 
 #clear{
@@ -57,6 +53,10 @@ body{
   margin: 0 auto;
   margin-left: 10px;
   border: 3px solid white;
+  cursor: pointer;
+  box-shadow: 13px 20px 36px 3px rgba(144, 200, 172, 0.7);
+-webkit-box-shadow: 13px 20px 36px 3px rgba(144, 200, 172, 0.7);
+-moz-box-shadow: 13px 20px 36px 3px rgba(144, 200, 172, 0.7);
 }
 
 #image-container {
@@ -91,15 +91,13 @@ summary{
   justify-content: center;
   text-align: center;
   transition: 0.5s;
+  cursor: pointer;
+  box-shadow: 13px 20px 36px 3px rgba(144, 200, 172, 0.5);
+-webkit-box-shadow: 13px 20px 36px 3px rgba(144, 200, 172, 0.7);
+-moz-box-shadow: 13px 20px 36px 3px rgba(144, 200, 172, 0.7);
 }
 
-details{
-  transition: 0.5s;
-}
 
-details summary::-webkit-details-marker {
-  display:none;
-}
 
 .bg {
   animation:slide 3s ease-in-out infinite alternate;
@@ -131,3 +129,4 @@ details summary::-webkit-details-marker {
     transform:translateX(25%);
   }
 }
+
