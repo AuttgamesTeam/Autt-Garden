@@ -153,8 +153,7 @@ const images = [
     "/assets/tiles/yellow.png",
     "/assets/tiles/rose.png",
     "/assets/tiles/sakura.png",
-    "/assets/tiles/giphy.gif",
-    
+    "/assets/tiles/d-violet.png",
 ];
 
 
