@@ -113,6 +113,10 @@ const images = [
     "/assets/tiles/tile101.png",
     "/assets/tiles/tile102.png",
     "/assets/tiles/tile104.png",
+    "/assets/tiles/tile104-orange.png",
+    "/assets/tiles/tile104-m-orange.png",
+    "/assets/tiles/tile104-grey.png",
+    "/assets/tiles/tile104-blue.png",
     "/assets/tiles/tile112.png",
     "/assets/tiles/tile113.png",
     "/assets/tiles/tile114.png",
@@ -153,6 +157,7 @@ const images = [
     "/assets/tiles/rose.png",
     "/assets/tiles/sakura.png",
     "/assets/tiles/d-violet.png",
+    
 ];
 
 let selectedImage;
@@ -172,9 +177,9 @@ images.forEach((image) => {
   });
   if (currentImage < 52) { //on met dans le span grass 
     divGrass.appendChild(img);
-  } else if (currentImage < 101) { //on met dans le span water
+  } else if (currentImage < 105) { //on met dans le span water
     divWater.appendChild(img);
-  } else if (currentImage < 133) { //on met dans le span cliff
+  } else if (currentImage < 137) { //on met dans le span cliff
     divCliff.appendChild(img);
   }  
   else if (currentImage < 222) { //on met dans le span cliff
