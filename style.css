@@ -14,10 +14,25 @@ body{
 .left{  
   background-color: blanchedalmond;
   float: left;
-  margin-left: 10%;
+  margin-left: 4%;
   margin-top: 13%;
   border : 2px solid white;
   padding: 10px;
+ 
+}
+
+.help{
+  background-color: blanchedalmond;
+  float: left;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 13%;
+  border : 2px solid white;
+  font-size: small;
+  margin-bottom: auto;
+  justify-content: center;
+  text-align: center;
+  padding: 8px;
 }
 
 #clear{
@@ -39,6 +54,7 @@ body{
   width: 400px;
   height: 400px;
   margin: 0 auto;
+  margin-left: 10px;
   border: 3px solid white;
 }
 
@@ -65,6 +81,11 @@ body{
 }
 
 summary{
+  border: 1px solid white;
   margin: 2%;
   background-color: #6a9c78;
+}
+
+.details{
+  transition: 0.5s;
 }

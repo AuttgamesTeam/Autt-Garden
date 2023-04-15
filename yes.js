@@ -155,7 +155,6 @@ for (let i = 0; i < canvas.width; i += tileSize) {
   }
 }
 
-
 images.forEach((image) => {
   const img = new Image();
   currentImage = currentImage + 1;
