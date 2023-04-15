@@ -47,6 +47,10 @@ body{
   background-color: white;
 }
 
+#save{
+  background-color: white;
+}
+
 #drawing-canvas {
   display: flex;
   justify-content: center;
