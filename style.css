@@ -5,6 +5,10 @@
   --blue: #73A9AD;
 }
 
+body{
+  font-family: "Nova Oval", sans-serif;
+  transition: 500ms;
+}
 
 .left{  
   float: left;
@@ -79,16 +83,22 @@
 }
 
 summary{
+  display: block;
   padding: 1%;
   font-size: large;
   border: 2px solid white;
   margin: 2%;
   justify-content: center;
   text-align: center;
+  transition: 0.5s;
 }
 
-.details{
+details{
   transition: 0.5s;
+}
+
+details summary::-webkit-details-marker {
+  display:none;
 }
 
 .bg {
