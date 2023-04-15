@@ -7,6 +7,7 @@ const divCliff = document.getElementById("cliff");
 const sc = document.getElementsByClassName("s-container");
 
 
+
 const tileSize = 40;
 let currentImage = 0;
 
@@ -207,4 +208,13 @@ function eraserButton() {
   }
 }
 
+function saveButton() {
+  setTimeout(() => {
+  const dataURL = canvas.toDataURL('image/png')
+  const downloadLink = document.createElement('a');
+  downloadLink.href = dataURL;
+  downloadLink.download = 'canvas.png';
+  downloadLink.click();
+  }, 1000);
+}
 
