@@ -1,7 +1,15 @@
 const canvas = document.getElementById("drawing-canvas");
 const ctx = canvas.getContext("2d");
 const imageContainer = document.getElementById("image-container");
+const divGrass = document.getElementById("grass");
+const divWater = document.getElementById("water");
+const divCliff = document.getElementById("cliff");
+const sc = document.getElementsByClassName("s-container");
+
+
 const tileSize = 40;
+let currentImage = 0;
+
 erase = false;
 
 
@@ -103,7 +111,6 @@ const images = [
     "/assets/tiles/tile100.png",
     "/assets/tiles/tile101.png",
     "/assets/tiles/tile102.png",
-    "/assets/tiles/tile103.png",
     "/assets/tiles/tile104.png",
     "/assets/tiles/tile112.png",
     "/assets/tiles/tile113.png",
@@ -148,13 +155,21 @@ for (let i = 0; i < canvas.width; i += tileSize) {
   }
 }
 
+
 images.forEach((image) => {
   const img = new Image();
+  currentImage = currentImage + 1;
   img.src = image;
   img.addEventListener("click", () => {
     selectedImage = image;
   });
-  imageContainer.appendChild(img);
+  if (currentImage < 52) { //on met dans le span grass 
+    divGrass.appendChild(img);
+  } else if (currentImage < 99) { //on met dans le span water
+    divWater.appendChild(img);
+  } else if (currentImage < 168) { //on met dans le span cliff
+    divCliff.appendChild(img);
+  }  
 });
 
 canvas.addEventListener("click", (event) => {
