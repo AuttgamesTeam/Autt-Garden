@@ -20,8 +20,7 @@
   float: left;
   margin-left: 3%;
   margin-right: 3%;
-  margin-top: 13%;
-  border : 2px solid white;
+  margin-top: 12%;
   font-size: small;
   margin-bottom: auto;
   justify-content: center;
@@ -80,9 +79,12 @@
 }
 
 summary{
-  border: 1px solid white;
+  padding: 1%;
+  font-size: large;
+  border: 2px solid white;
   margin: 2%;
-  background-color: #6a9c78;
+  justify-content: center;
+  text-align: center;
 }
 
 .details{
