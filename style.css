@@ -99,8 +99,6 @@ summary{
 -moz-box-shadow: 13px 20px 36px 3px rgba(144, 200, 172, 0.7);
 }
 
-
-
 .bg {
   animation:slide 3s ease-in-out infinite alternate;
   background-image: linear-gradient(-60deg, var(--yellow) 50%, var(--green) 50%);
@@ -111,15 +109,16 @@ summary{
   right:-50%;
   top:0;
   z-index:-1;
+  animation-duration: 7s;
 }
 
 .bg2 {
   animation-direction:alternate-reverse;
-  animation-duration:8s;
+  animation-duration:10s;
 }
 
 .bg3 {
-  animation-duration:9s;
+  animation-duration:14s;
 }
 
 

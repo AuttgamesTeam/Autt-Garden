@@ -7,13 +7,10 @@ const divCliff = document.getElementById("cliff");
 const divFlowers = document.getElementById("flower");
 const sc = document.getElementsByClassName("s-container");
 
-
-
 const tileSize = 40;
 let currentImage = 0;
 
 erase = false;
-
 
 const images = [
     "/assets/tiles/tile001.png",
@@ -156,7 +153,6 @@ const images = [
     "/assets/tiles/d-violet.png",
 ];
 
-
 let selectedImage;
 
 for (let i = 0; i < canvas.width; i += tileSize) {
@@ -227,6 +223,6 @@ function saveButton() {
   downloadLink.href = dataURL;
   downloadLink.download = 'canvas.png';
   downloadLink.click();
-  }, 1000);
+  }, 800);
 }
 
