@@ -63,6 +63,7 @@ body{
 }
 
 #image-container {
+  justify-content: center;
   padding: 15px;
   display: flex;
   flex-wrap: wrap;
