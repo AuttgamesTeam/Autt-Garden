@@ -46,6 +46,10 @@ body{
   background-color: white;
 }
 
+#github{
+  background-color: white;
+}
+
 #drawing-canvas {
   display: flex;
   justify-content: center;

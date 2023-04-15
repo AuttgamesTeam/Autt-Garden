@@ -233,3 +233,6 @@ function saveButton() {
   }, 800);
 }
 
+function gitButton() {
+  window.open("https://github.com/Claquettes/garden");
+}
