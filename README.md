@@ -10,15 +10,16 @@ A project started in march 2023. It's a calm and relaxing game where you can mak
 
 ## Getting Started
 How to play:
-    - Open the game in your browser by clicking [here](https://claq.fr/garden).
-    - Click on a categorie of tiles to open it.
-    - Click on a tile to select it.
-    - Click on another tile to place the selected tile.
-    - Click on the "eraser" icon to delete a tile.
-    - Click on the "Save" icon to save your garden as a PNG image.
-    - Click on the "export" icon to save your garden as a JSON file.
-    - Click on the "browse" button to load a JSON file and import it into your garden.
-    - Click on the "bin" icon to reset your garden.
+
+- Open the game in your browser by clicking [here](https://claq.fr/garden).
+- Click on a categorie of tiles to open it.
+- Click on a tile to select it.
+- Click on another tile to place the selected tile.
+- Click on the "eraser" icon to delete a tile.
+- Click on the "Save" icon to save your garden as a PNG image.
+- Click on the "export" icon to save your garden as a JSON file.
+- Click on the "browse" button to load a JSON file and import it into your garden.
+- Click on the "bin" icon to reset your garden.
 
 ## Credits
     - background template : https://codepen.io/chris22smith/pen/RZogMa
