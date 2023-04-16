@@ -52,6 +52,14 @@ body{
   cursor: pointer;
 }
 
+#export{
+  background-color: white;
+}
+
+#gardenImput{
+  background-color: white;
+}
+
 #drawing-canvas {
   display: flex;
   justify-content: center;
