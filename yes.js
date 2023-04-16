@@ -63,6 +63,7 @@ const images = [
     "/assets/tiles/tile047.png",
     "/assets/tiles/tile048.png",
     "/assets/tiles/tile049.png",
+    "/assets/tiles/tile049-well.png",
     "/assets/tiles/tile050.png",
     "/assets/tiles/tile051.png",
     "/assets/tiles/tile057.png",
@@ -179,11 +180,11 @@ images.forEach((image) => {
   img.addEventListener("click", () => {
     selectedImage = image;
   });
-  if (currentImage < 52) { //on met dans le span grass 
+  if (currentImage < 53) { //on met dans le span grass 
     divGrass.appendChild(img);
-  } else if (currentImage < 108) { //on met dans le span water
+  } else if (currentImage < 109) { //on met dans le span water
     divWater.appendChild(img);
-  } else if (currentImage < 142) { //on met dans le span cliff
+  } else if (currentImage < 143) { //on met dans le span cliff
     divCliff.appendChild(img);
   }  
   else if (currentImage < 222) { //on met dans le span fleurs
