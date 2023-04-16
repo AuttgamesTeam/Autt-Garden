@@ -265,13 +265,11 @@ function exportButton(){ //we export the canvas as a json file
     //on met le nom du fichier, en ajoutant l'heure et la date
     var filename = prompt("Name of your creation :");
     filename = filename + ".json";
-  
     a.download    = filename;
     a.href        = url;
     a.textContent = "Download file";
     a.click();
 }
-
 
 //we import a json file in the "gardenInput" input
 fileInput.addEventListener('change', (event) => {
