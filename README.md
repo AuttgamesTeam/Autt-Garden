@@ -7,7 +7,6 @@ A project started in march 2023. It's a calm and relaxing game where you can mak
   - Ability to load a JSON file and import it into your garden.
   - SoundCloud integration with a lofi playlist.
 
-
 ## Getting Started
 How to play:
 
@@ -20,6 +19,14 @@ How to play:
 - Click on the "export" icon to save your garden as a JSON file.
 - Click on the "browse" button to load a JSON file and import it into your garden.
 - Click on the "bin" icon to reset your garden.
+
+## Creations from the community
+- [Garden by Sun] <div align="center"> <img src="https://imgur.com/a/bq7z2lj" width="400px" /> </div>
+
+
+
+
+
 
 ## Credits
     - background template : https://codepen.io/chris22smith/pen/RZogMa
