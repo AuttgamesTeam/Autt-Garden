@@ -166,7 +166,6 @@ const images = [
 ];
 
 let selectedImage;
-
 for (let i = 0; i < canvas.width; i += tileSize) {
   for (let j = 0; j < canvas.height; j += tileSize) {
     ctx.rect(i, j, tileSize, tileSize);
