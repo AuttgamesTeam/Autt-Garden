@@ -232,8 +232,10 @@ function saveButton() {
   setTimeout(() => {
   const dataURL = canvas.toDataURL('image/png')
   const downloadLink = document.createElement('a');
-  downloadLink.href = dataURL;
-  downloadLink.download = 'canvas.png';
+  //onn demande le nom du fichier
+  let filename = prompt("Name of your creation :");
+  filename = filename + ".png";
+  downloadLink.download = filename;
   downloadLink.click();
   }, 800);
 }
@@ -259,7 +261,11 @@ function exportButton(){ //we export the canvas as a json file
     let url  = URL.createObjectURL(blob);
     //we download the file
     let a = document.createElement('a');
-    a.download    = "garden.json";
+    //on met le nom du fichier, en ajoutant l'heure et la date
+    var filename = prompt("Name of your creation :");
+    filename = filename + ".json";
+  
+    a.download    = filename;
     a.href        = url;
     a.textContent = "Download file";
     a.click();
