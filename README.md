@@ -21,7 +21,7 @@ How to play:
 - Click on the "bin" icon to reset your garden.
 
 ## Creations from the community
-- [Garden by Sun] <div align="center"> <img src="https://i.imgur.com/o7wxb1T.png" width="400px" /> </div>
+- Created by Sun <div align="center"> <img src="https://i.imgur.com/o7wxb1T.png" width="400px" /> </div>
 
 
 
