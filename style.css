@@ -56,8 +56,9 @@ body{
   background-color: white;
 }
 
-#gardenImput{
+#gardenInput{
   background-color: white;
+  font-size: x-small;
 }
 
 #drawing-canvas {
