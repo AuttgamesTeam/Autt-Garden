@@ -23,6 +23,7 @@ How to play:
 ## Creations from the community
 - Created by Sun <div align="center"> <img src="https://i.imgur.com/o7wxb1T.png" width="400px" /> </div>
 - Created by Tibouyou <div align="center"> <img src="https://i.imgur.com/HUlL3C7.png" width="400px" /> </div>
+- Created by Claquettes <div align="center"> <img src="https://i.imgur.com/TE3LA3Z.png" width="400px" /> </div>
 
 ## Credits
     - background template : https://codepen.io/chris22smith/pen/RZogMa
