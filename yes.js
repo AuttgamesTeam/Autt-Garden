@@ -195,18 +195,39 @@ function changeSize(){ //we use the form sizeOfGarden to change the size of the 
 }
 
 //on appelle la fonction cycle tous les 1000ms  
-setInterval(cycle, 3000);
+setInterval(cycle, 1000);
 
 function cycle() {
   hours++;
   if (hours == 24) {
     hours = 0;
   }
-  const brightness = Math.sin(hours) * 50 + 50;
-  filterValue = `brightness(${brightness}%)`;
-  console.log(hours);
-  console.log(brightness);
-  //on applique le filtre à toutes les images du canva, et pas seulement à celles qui ont été sélectionnées.
+  const brightness = Math.sin(hours/10) * 50 + 50;
+  switch (hours) {
+      case 15:
+          filterValue = `brightness(${brightness}%) sepia(10%)`;
+          break;
+      case 16:
+          filterValue = `brightness(${brightness}%) sepia(20%)`;
+          break;
+      case 17:
+          filterValue = `brightness(${brightness}%) sepia(25%)`;
+          break;  
+      case 18:
+          filterValue = `brightness(${brightness}%) sepia(30%)`;
+          break;
+      case 19:
+          filterValue = `brightness(${brightness}%) sepia(25%)`;
+          break;
+      case 20:
+          filterValue = `brightness(${brightness}%) sepia(20%)`;
+          break;
+      case 21:
+          filterValue = `brightness(${brightness}%) sepia(10%)`;
+          break;
+      default:
+          filterValue = `brightness(${brightness}%)`;
+  }
 }
 
 
