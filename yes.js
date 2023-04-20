@@ -15,6 +15,7 @@ let filterValue = 'brightness(100%)';
 
 let erase = false;
 let noCycle = false;
+let freezeTime = false;
 
 let lastUndo = new Date();
 let lastEdits = []
@@ -137,9 +138,14 @@ function cycleButton() {
   console.log(noCycle)
 }
 
-
-
-
+function freezeTimeButton() {
+  if(freezeTime) {
+    freezeTime = false;
+  } else {
+    freezeTime = true;
+  }
+  console.log(freezeTime)
+}
 
 function exportButton(){ //we export the canvas as a json file
   console.dir(canvasArray)
@@ -212,9 +218,9 @@ function changeSize(){ //we use the form sizeOfGarden to change the size of the 
 setInterval(cycle, 1000);
 
 function cycle() {
-  hours++;
-  if (hours == 24) {
-    hours = 0;
+  if (!freezeTime) {hours++;
+    if (hours == 24) {
+      hours = 0;}
   }
   const brightness = Math.sin(hours/10) * 50 + 50;
   switch (hours) {
