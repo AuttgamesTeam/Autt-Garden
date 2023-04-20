@@ -14,6 +14,7 @@ let hours = 0;
 let filterValue = 'brightness(100%)';
 
 let erase = false;
+let noCycle = false;
 
 let lastUndo = new Date();
 let lastEdits = []
@@ -126,6 +127,19 @@ function saveButton() {
 function gitButton() {
   window.open("https://github.com/Claquettes/garden");
 }
+
+function cycleButton() {
+  if(noCycle) {
+    noCycle = false;
+  } else {
+    noCycle = true;
+  }
+  console.log(noCycle)
+}
+
+
+
+
 
 function exportButton(){ //we export the canvas as a json file
   console.dir(canvasArray)
@@ -254,6 +268,9 @@ document.addEventListener("keyup", keyUpHandler, false);
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.filter = filterValue;
+  if(noCycle) {
+    ctx.filter = "brightness(100%)";
+  }
   canvasArray.forEach((row, i) => {
     row.forEach((tile, j) => {
       let imgTag = canvasArray[i][j];
