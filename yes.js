@@ -68,7 +68,7 @@ canvas.addEventListener("click", (event) => {
 });
 
 function undo() {
-  if ((new Date() - lastUndo) < 20) return;
+  if ((new Date() - lastUndo) < 30) return;
   lastUndo = new Date();
 
   if (lastEdits.length == 0) return;
