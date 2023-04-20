@@ -14,6 +14,9 @@ let hours = 0;
 let filterValue = 'brightness(100%)';
 
 let erase = false;
+let lastUndo = new Date();
+
+let lastEdits = []
 
 const imageFolder = "/assets/tiles/";
 
@@ -53,14 +56,33 @@ canvas.addEventListener("click", (event) => {
   const y = j * tileSize;
   if (erase) { //on ne pose pas d'image, on efface
     ctx.clearRect(x, y, tileSize, tileSize);
+    lastEdits.push({i, j, prevImg: canvasArray[i][j]})
     canvasArray[i][j] = "void";
   }
 
   if(selectedImage) {
     ctx.drawImage(selectedImage.img, x, y, tileSize, tileSize);
+    lastEdits.push({i, j, prevImg: canvasArray[i][j]})
     canvasArray[i][j] = selectedImage.tag;
   }
 });
+
+function undo() {
+  if ((new Date() - lastUndo) < 20) return;
+  lastUndo = new Date();
+
+  if (lastEdits.length == 0) return;
+  console.dir(lastEdits)
+
+  let lastEdit = lastEdits.pop();
+
+  if (lastEdit.prevImg == "void") {
+    ctx.clearRect(lastEdit.i*tileSize, lastEdit.j*tileSize, tileSize, tileSize);
+
+  } else {
+    ctx.drawImage(categories[lastEdit.prevImg[0]].images[lastEdit.prevImg.slice(1)], lastEdit.i*tileSize, lastEdit.j*tileSize, tileSize, tileSize);
+  }
+}
 
 //on met les fonctions des boutons ici
 function clearButton() {
@@ -145,7 +167,7 @@ fileInput.addEventListener('change', (event) => {
       } else {
         let category = categories[imgTag[0]];
         console.log(category)
-        let number = parseInt(imgTag.substring(1));
+        let number = parseInt(imgTag.slice(1));
         ctx.drawImage(category.images[number], i*tileSize, j*tileSize, tileSize, tileSize);
       }
     });
@@ -182,3 +204,6 @@ function cycle() {
 }
 
 
+
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
