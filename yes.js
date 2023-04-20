@@ -290,3 +290,14 @@ fileInput.addEventListener('change', (event) => {
   reader.readAsText(file);
 });
     
+function changeSize(){ //we use the form sizeOfGarden to change the size of the canvas
+  let size = document.getElementById("sizeOfGarden").value;
+  canvas.width = size;
+  canvas.height = size;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let i = 0; i < canvas.width; i += tileSize) {
+    for (let j = 0; j < canvas.height; j += tileSize) {
+      ctx.rect(i, j, tileSize, tileSize);
+    }
+  }
+}
