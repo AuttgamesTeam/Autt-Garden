@@ -205,5 +205,21 @@ function cycle() {
 
 
 
+function keyDownHandler(e) {
+  if(e.key == "Shift") {
+    erase = true;
+    document.getElementById("eraser").style.backgroundColor = "red";
+  } else if (e.keyCode == 90 && e.ctrlKey) {
+    undo();
+  }
+}
+
+function keyUpHandler(e) {
+  if(e.key == "Shift") {
+    erase = false;
+    document.getElementById("eraser").style.backgroundColor = "white";
+  }
+}
+
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
