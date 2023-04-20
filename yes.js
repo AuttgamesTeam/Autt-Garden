@@ -10,6 +10,8 @@ const fileInput = document.getElementById('gardenInput');
 
 const tileSize = 40;
 let currentImage = 0;
+let hours = 0;
+let filterValue = 'brightness(100%)';
 
 let erase = false;
 
@@ -163,3 +165,20 @@ function changeSize(){ //we use the form sizeOfGarden to change the size of the 
     }
   }
 }
+
+//on appelle la fonction cycle tous les 1000ms  
+setInterval(cycle, 1000);
+
+function cycle() {
+  hours++;
+  if (hours == 24) {
+    hours = 0;
+  }
+  const brightness = Math.sin(hours) * 50 + 50;
+  filterValue = `brightness(${brightness}%)`;
+  console.log(hours);
+  console.log(brightness);
+  //on applique le filtre à toutes les images du canva, et pas seulement à celles qui ont été sélectionnées.
+}
+
+
