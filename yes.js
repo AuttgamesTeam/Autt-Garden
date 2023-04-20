@@ -55,16 +55,15 @@ canvas.addEventListener("click", (event) => {
   const x = i * tileSize;
   const y = j * tileSize;
   if (erase) { //on ne pose pas d'image, on efface
-    ctx.clearRect(x, y, tileSize, tileSize);
     lastEdits.push({i, j, prevImg: canvasArray[i][j]})
     canvasArray[i][j] = "void";
   }
 
   if(selectedImage) {
-    ctx.drawImage(selectedImage.img, x, y, tileSize, tileSize);
     lastEdits.push({i, j, prevImg: canvasArray[i][j]})
     canvasArray[i][j] = selectedImage.tag;
   }
+  console.dir(canvasArray)
 });
 
 function undo() {
@@ -76,19 +75,14 @@ function undo() {
 
   let lastEdit = lastEdits.pop();
 
-  if (lastEdit.prevImg == "void") {
-    ctx.clearRect(lastEdit.i*tileSize, lastEdit.j*tileSize, tileSize, tileSize);
-
-  } else {
-    ctx.drawImage(categories[lastEdit.prevImg[0]].images[lastEdit.prevImg.slice(1)], lastEdit.i*tileSize, lastEdit.j*tileSize, tileSize, tileSize);
-  }
+  canvasArray[lastEdit.i][lastEdit.j] = lastEdit.prevImg;
 }
 
 //on met les fonctions des boutons ici
 function clearButton() {
   //on demande confirmation
   if (confirm("Voulez-vous vraiment tout effacer ?")) {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  canvasArray = new Array(10).fill(0).map(() => new Array(10).fill("void"));
   }
 }
 
@@ -163,12 +157,12 @@ fileInput.addEventListener('change', (event) => {
       let j = tile.j;
 
       if (imgTag == "void") {
-        ctx.clearRect(i*tileSize, j*tileSize, tileSize, tileSize);
+        canvasArray[i][j] = "void";
       } else {
         let category = categories[imgTag[0]];
         console.log(category)
         let number = parseInt(imgTag.slice(1));
-        ctx.drawImage(category.images[number], i*tileSize, j*tileSize, tileSize, tileSize);
+        canvasArray[i][j] = imgTag;
       }
     });
   };
@@ -223,3 +217,21 @@ function keyUpHandler(e) {
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  canvasArray.forEach((row, i) => {
+    row.forEach((tile, j) => {
+      let imgTag = canvasArray[i][j];
+      if (imgTag == "void") {
+        ctx.clearRect(i*tileSize, j*tileSize, tileSize, tileSize);
+      } else {
+        let category = categories[imgTag[0]];
+        let number = parseInt(imgTag.slice(1));
+        ctx.drawImage(category.images[number], i*tileSize, j*tileSize, tileSize, tileSize);
+      }
+    })
+  });
+  requestAnimationFrame(draw);
+}
+requestAnimationFrame(draw);
