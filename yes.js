@@ -57,9 +57,7 @@ canvas.addEventListener("click", (event) => {
   if (erase) { //on ne pose pas d'image, on efface
     lastEdits.push({i, j, prevImg: canvasArray[i][j]})
     canvasArray[i][j] = "void";
-  }
-
-  if(selectedImage) {
+  } else if(selectedImage) {
     lastEdits.push({i, j, prevImg: canvasArray[i][j]})
     canvasArray[i][j] = selectedImage.tag;
   }
@@ -92,9 +90,9 @@ function eraserButton() {
     //on remet la couleur du bouton à la normale
     document.getElementById("eraser").style.backgroundColor = "white";
   } else { //sinon on active le mode gomme
-  selectedImage = null;
-  erase = true;
-  document.getElementById("eraser").style.backgroundColor = "red";
+    selectedImage = null;
+    erase = true;
+    document.getElementById("eraser").style.backgroundColor = "red";
   }
 }
 
