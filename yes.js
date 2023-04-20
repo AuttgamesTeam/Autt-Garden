@@ -218,7 +218,8 @@ function changeSize(){ //we use the form sizeOfGarden to change the size of the 
 setInterval(cycle, 1000);
 
 function cycle() {
-  if (!freezeTime) {hours++;
+  if (!freezeTime) {
+    hours++;
     if (hours == 24) {
       hours = 0;}
   }
