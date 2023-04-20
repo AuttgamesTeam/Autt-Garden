@@ -220,6 +220,7 @@ document.addEventListener("keyup", keyUpHandler, false);
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.filter = filterValue;
   canvasArray.forEach((row, i) => {
     row.forEach((tile, j) => {
       let imgTag = canvasArray[i][j];
@@ -232,6 +233,8 @@ function draw() {
       }
     })
   });
+
+
   requestAnimationFrame(draw);
 }
 requestAnimationFrame(draw);
