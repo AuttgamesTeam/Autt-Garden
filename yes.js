@@ -14,9 +14,12 @@ let hours = 0;
 let filterValue = 'brightness(100%)';
 
 let erase = false;
-let lastUndo = new Date();
 
+let lastUndo = new Date();
 let lastEdits = []
+let hover = false;
+let hoverX = 0;
+let hoverY = 0;
 
 const imageFolder = "/assets/tiles/";
 
@@ -52,18 +55,27 @@ for (let i = 0; i < canvas.width; i += tileSize) {
 canvas.addEventListener("click", (event) => {
   let i = Math.floor(event.offsetX / tileSize);
   let j = Math.floor(event.offsetY / tileSize);
-  const x = i * tileSize;
-  const y = j * tileSize;
+  let x = i * tileSize;
+  let y = j * tileSize;
   if (erase) { //on ne pose pas d'image, on efface
     lastEdits.push({i, j, prevImg: canvasArray[i][j]})
     canvasArray[i][j] = "void";
-  }
-
-  if(selectedImage) {
+  } else if(selectedImage) {
     lastEdits.push({i, j, prevImg: canvasArray[i][j]})
     canvasArray[i][j] = selectedImage.tag;
   }
   console.dir(canvasArray)
+});
+
+canvas.addEventListener("mousemove", (event) => {
+  hoverX = Math.floor(event.offsetX / tileSize);
+  hoverY = Math.floor(event.offsetY / tileSize);
+
+  hover = true;
+});
+
+canvas.addEventListener("mouseout", (event) => {
+  hover = false;
 });
 
 function undo() {
@@ -92,9 +104,9 @@ function eraserButton() {
     //on remet la couleur du bouton à la normale
     document.getElementById("eraser").style.backgroundColor = "white";
   } else { //sinon on active le mode gomme
-  selectedImage = null;
-  erase = true;
-  document.getElementById("eraser").style.backgroundColor = "red";
+    selectedImage = null;
+    erase = true;
+    document.getElementById("eraser").style.backgroundColor = "red";
   }
 }
 
@@ -233,6 +245,12 @@ function draw() {
       }
     })
   });
+
+  if (hover) {
+    ctx.strokeStyle = "rgba(0, 0, 0, 0.2)";
+    let rect = ctx.strokeRect(hoverX*tileSize, hoverY*tileSize, tileSize, tileSize);
+    console.log(hoverX, hoverY)
+  }
 
 
   requestAnimationFrame(draw);
