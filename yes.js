@@ -167,7 +167,7 @@ function changeSize(){ //we use the form sizeOfGarden to change the size of the 
 }
 
 //on appelle la fonction cycle tous les 1000ms  
-setInterval(cycle, 1000);
+setInterval(cycle, 3000);
 
 function cycle() {
   hours++;
