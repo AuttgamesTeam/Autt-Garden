@@ -15,20 +15,27 @@ let erase = false;
 
 const imageFolder = "/assets/tiles/";
 
-const categories = [
-                      {name: "grass", number: 53, prefix: "g", container: divGrass},
-                      {name: "water", number: 56, prefix: "w", container: divWater},
-                      {name: "cliffs", number: 34, prefix: "c", container: divCliff},
-                      {name: "flowers", number: 8, prefix: "f", container: divFlowers}
-                    ];
+const categories = {
+                      'g': {name: "grass", number: 52, prefix: "g", container: divGrass},
+                      'w': {name: "water", number: 56, prefix: "w", container: divWater},
+                      'c': {name: "cliffs", number: 34, prefix: "c", container: divCliff},
+                      'f': {name: "flowers", number: 8, prefix: "f", container: divFlowers}
+};
+let canvasArray = new Array(10).fill(0).map(() => new Array(10).fill("void"));
 
-categories.forEach((category) => {
+for (let prefix in categories) {
+  let category = categories[prefix];
+  category.images = new Array(category.number);
   for (let i = 0; i < category.number; i++) {
     const image = new Image();
-    image.src = `${imageFolder}${category.name}/${category.prefix}${i}.png`;
+    image.src = `${imageFolder}${category.name}/${prefix}${i}.png`;
+    category.images[i] = image;
+
+    image.addEventListener("click", () => {
+      selectedImage = {img: image, tag: `${prefix}${i}`, category: category, number: i};
+    });
     category.container.appendChild(image);
-  }
-});
+  }};
 
 let selectedImage;
 for (let i = 0; i < canvas.width; i += tileSize) {
@@ -38,18 +45,18 @@ for (let i = 0; i < canvas.width; i += tileSize) {
 }
 
 canvas.addEventListener("click", (event) => {
-  const x = Math.floor(event.offsetX / tileSize) * tileSize;
-  const y = Math.floor(event.offsetY / tileSize) * tileSize;
+  let i = Math.floor(event.offsetX / tileSize);
+  let j = Math.floor(event.offsetY / tileSize);
+  const x = i * tileSize;
+  const y = j * tileSize;
   if (erase) { //on ne pose pas d'image, on efface
     ctx.clearRect(x, y, tileSize, tileSize);
+    canvasArray[i][j] = "void";
   }
 
   if(selectedImage) {
-    const image = new Image();
-    image.src = selectedImage;
-    image.onload = () => {
-      ctx.drawImage(image, x, y, tileSize, tileSize);
-    };
+    ctx.drawImage(selectedImage.img, x, y, tileSize, tileSize);
+    canvasArray[i][j] = selectedImage.tag;
   }
 });
 
@@ -75,14 +82,14 @@ function eraserButton() {
 
 function saveButton() {
   setTimeout(() => {
-  const dataURL = canvas.toDataURL('image/png')
-  const downloadLink = document.createElement('a');
-  //onn demande le nom du fichier
-  let filenamepng = prompt("Name of your creation :");
-  filenamepng = filenamepng + ".png";
-  downloadLink.href = dataURL;
-  downloadLink.download = filenamepng;
-  downloadLink.click();
+    const dataURL = canvas.toDataURL('image/png')
+    const downloadLink = document.createElement('a');
+    //on demande le nom du fichier
+    let filenamepng = prompt("Name of your creation :");
+    filenamepng = filenamepng + ".png";
+    downloadLink.href = dataURL;
+    downloadLink.download = filenamepng;
+    downloadLink.click();
   }, 800);
 }
 
@@ -91,16 +98,18 @@ function gitButton() {
 }
 
 function exportButton(){ //we export the canvas as a json file
+  console.dir(canvasArray)
     let data = [];
     //for each tile, we get the image source and the position
-    for (let i = 0; i < canvas.width; i += tileSize) {
-      for (let j = 0; j < canvas.height; j += tileSize) {
-        let imgData = ctx.getImageData(i, j, tileSize, tileSize);
-        let dataURL = canvas.toDataURL();
-        let src = dataURL;
-        data.push({src, i, j});
-      }
-    }
+
+    canvasArray.forEach((row, i) => {
+      row.forEach((tile, j) => {
+        console.log(canvasArray[i][j])
+        let imgTag = canvasArray[i][j];
+        data.push({imgTag, i, j});
+      })
+    });
+
     //we create a json file
     let json = JSON.stringify(data);
     let blob = new Blob([json], {type: "application/json"});
@@ -125,14 +134,22 @@ fileInput.addEventListener('change', (event) => {
   reader.onload = (event) => {
     const data = JSON.parse(event.target.result);
     data.forEach((tile) => {
-      const image = new Image();
-      image.src = tile.src;
-      image.onload = () => {
-        ctx.drawImage(image, tile.i*tileSize, tile.j*tileSize, tileSize*10, tileSize*10);
-      };
+      let imgTag = tile.imgTag;
+      let i = tile.i;
+      let j = tile.j;
+
+      if (imgTag == "void") {
+        ctx.clearRect(i*tileSize, j*tileSize, tileSize, tileSize);
+      } else {
+        let category = categories[imgTag[0]];
+        console.log(category)
+        let number = parseInt(imgTag.substring(1));
+        ctx.drawImage(category.images[number], i*tileSize, j*tileSize, tileSize, tileSize);
+      }
     });
   };
   reader.readAsText(file);
+  fileInput.value = "";
 });
     
 function changeSize(){ //we use the form sizeOfGarden to change the size of the canvas
