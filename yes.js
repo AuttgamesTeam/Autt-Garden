@@ -250,8 +250,6 @@ function cycle() {
   }
 }
 
-
-
 function keyDownHandler(e) {
   if(e.key == "Shift") {
     erase = true;
