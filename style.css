@@ -61,6 +61,13 @@ body{
   font-size: x-small;
 }
 
+#noCycle, #freezeTime {   
+  background-color: rgba(144, 200, 172, 0.1);
+  font-family: "Nova Oval", sans-serif;
+  border: 2px solid white;
+  margin-bottom: 2%;
+}
+
 #drawing-canvas {
   display: flex;
   justify-content: center;
