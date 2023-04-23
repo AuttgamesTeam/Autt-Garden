@@ -15,8 +15,8 @@
   <meta property="og:site_name" content="AUTT Garden"/>
   <meta property="og:type" content="website"/>
   <meta property="og:locale" content="fr"/>
-  <link rel="icon" type="image/png" href="/garden.ico" sizes="192x192">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/png" href="garden.ico" sizes="192x192">
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nova+Oval">
   </head>
   <body>
@@ -25,11 +25,11 @@
 <div class="bg bg3"></div>
     <span class="left">
       <div class="buttons">
-        <button id="clear" onclick="clearButton()"><img src="/assets/buttons/delete.png" alt="clear" width="35"></button>
-        <button id="eraser" onclick="eraserButton()"><img src="/assets/buttons/eraser.png" alt="eraser" width="35"></button>
-        <button id="save" onclick="saveButton()"><img src="/assets/buttons/sauver.png" alt="save" width="35"></button>
-        <button id="github" onclick="gitButton()"><img src="/assets/buttons/github.png" alt="github" width="35"></button>
-        <button id="export" onclick="exportButton()"><img src="/assets/buttons/export.png" alt="export" width="35"></button>
+        <button id="clear" onclick="clearButton()"><img src="assets/buttons/delete.png" alt="clear" width="35"></button>
+        <button id="eraser" onclick="eraserButton()"><img src="assets/buttons/eraser.png" alt="eraser" width="35"></button>
+        <button id="save" onclick="saveButton()"><img src="assets/buttons/sauver.png" alt="save" width="35"></button>
+        <button id="github" onclick="gitButton()"><img src="assets/buttons/github.png" alt="github" width="35"></button>
+        <button id="export" onclick="exportButton()"><img src="assets/buttons/export.png" alt="export" width="35"></button>
         <input type="file" id="gardenInput">
       </div>
     <span class="help">
@@ -45,12 +45,12 @@
         <button id="noCycle"onclick="cycleButton()">Click here to disable the Day / Night cycle</button>
         <button id="freezeTime"onclick="freezeTimeButton()">Freeze Time</button>
       </details>
-      <form class="sizeOfGarden">
-        <label for="size">Size of the garden</label>
-        <input type="number" id="length" name="length" min="1" max="15" value="10">
+      <span class="sizeOfGarden">
+        Size of the garden
+        <input type="number" id="height" name="height" min="1" max="25" value="10">
         <input type="number" id="width" name="width" min="1" max="25" value="10">
-        <input type="submit" value="Submit">
-      </form>
+        <button id="size" onclick="changeSize()">Changer</button>
+      </span>
     </span>
     <iframe width="100%" height="200" scrolling="no" frameborder="no"  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/300494469&color=%23c4dfaa&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/chillhopdotcom" title="Chillhop Music" target="_blank" style="color: #cccccc; text-decoration: none;">Chillhop Music</a> · <a href="https://soundcloud.com/chillhopdotcom/sets/lofihiphop" title="lofi hip hop playlist" target="_blank" style="color: #cccccc; text-decoration: none;">lofi hip hop playlist</a></div>
     </span>
@@ -76,5 +76,5 @@
       </details> <!-- contient les images de cliff -->
     </div>
   </body>
-  <script src="/yes.js"></script>
+  <script src="yes.js"></script>
 </html>
