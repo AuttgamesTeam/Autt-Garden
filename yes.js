@@ -23,7 +23,7 @@ let hover = false;
 let hoverX = 0;
 let hoverY = 0;
 
-const imageFolder = "/assets/tiles/";
+const imageFolder = "assets/tiles/";
 
 const categories = {
                       'g': {name: "grass", number: 59, prefix: "g", container: divGrass},
@@ -93,6 +93,20 @@ function undo() {
 }
 
 //on met les fonctions des boutons ici
+function changeSize() {
+  let newHeight = document.getElementById("height").value;
+  let newWidth = document.getElementById("width").value;
+  canvas.width = newHeight*tileSize;
+  canvas.height = newWidth*tileSize;
+  canvasArray = new Array(canvas.width/tileSize).fill(0).map(() => new Array(canvas.height/tileSize).fill("void"));
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let i = 0; i < canvas.width; i += tileSize) {
+    for (let j = 0; j < canvas.height; j += tileSize) {
+      ctx.rect(i, j, tileSize, tileSize);
+    }
+  }
+}
+
 function clearButton() {
   //on demande confirmation
   if (confirm("Voulez-vous vraiment tout effacer ?")) {
@@ -159,16 +173,15 @@ function exportButton(){ //we export the canvas as a json file
         data.push({imgTag, i, j});
       })
     });
-
+    let json = JSON.stringify({width: canvas.width/tileSize, height: canvas.height/tileSize, tiles: data});
     //we create a json file
-    let json = JSON.stringify(data);
     let blob = new Blob([json], {type: "application/json"});
     let url  = URL.createObjectURL(blob);
     //we download the file
     let a = document.createElement('a');
     //on met le nom du fichier, en ajoutant l'heure et la date
-    var filename = prompt("Name of your creation :");
-    filename = filename + ".json";
+    let filename = prompt("Name of your creation :");
+    filename += ".json";
     a.download    = filename;
     a.href        = url;
     a.textContent = "Download file";
@@ -178,12 +191,18 @@ function exportButton(){ //we export the canvas as a json file
 //we import a json file in the "gardenInput" input
 fileInput.addEventListener('change', (event) => {
   const file = event.target.files[0];
+  
   console.log('Selected file:', file);
   //when we select a file, we read it, and then we draw the images on the canvas
   const reader = new FileReader();
   reader.onload = (event) => {
-    const data = JSON.parse(event.target.result);
-    data.forEach((tile) => {
+    const json = JSON.parse(event.target.result);
+    let height = json["height"];
+    let width = json["width"];
+    canvas.width = height*tileSize;
+    canvas.height = width*tileSize;
+    canvasArray = new Array(canvas.width/tileSize).fill(0).map(() => new Array(canvas.height/tileSize).fill("void"));
+    json["tiles"].forEach((tile) => {
       let imgTag = tile.imgTag;
       let i = tile.i;
       let j = tile.j;
@@ -202,17 +221,7 @@ fileInput.addEventListener('change', (event) => {
   fileInput.value = "";
 });
     
-function changeSize(){ //we use the form sizeOfGarden to change the size of the canvas
-  let size = document.getElementById("sizeOfGarden").value;
-  canvas.width = size;
-  canvas.height = size;
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  for (let i = 0; i < canvas.width; i += tileSize) {
-    for (let j = 0; j < canvas.height; j += tileSize) {
-      ctx.rect(i, j, tileSize, tileSize);
-    }
-  }
-}
+
 
 //on appelle la fonction cycle tous les 1000ms  
 setInterval(cycle, 1000);
