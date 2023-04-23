@@ -224,40 +224,22 @@ fileInput.addEventListener('change', (event) => {
 
 
 //on appelle la fonction cycle tous les 1000ms  
-setInterval(cycle, 1000);
+setInterval(cycle, 100);
 
 function cycle() {
   if (!freezeTime) {
-    hours++;
-    if (hours == 24) {
-      hours = 0;}
+    hours += 0.1;
+    hours = hours % 24;
+  } else {
+    hours = document.getElementById("hourSlide").value/10;
   }
-  const brightness = Math.sin(hours/10) * 50 + 50;
-  switch (hours) {
-      case 15:
-          filterValue = `brightness(${brightness}%) sepia(10%)`;
-          break;
-      case 16:
-          filterValue = `brightness(${brightness}%) sepia(20%)`;
-          break;
-      case 17:
-          filterValue = `brightness(${brightness}%) sepia(25%)`;
-          break;  
-      case 18:
-          filterValue = `brightness(${brightness}%) sepia(30%)`;
-          break;
-      case 19:
-          filterValue = `brightness(${brightness}%) sepia(25%)`;
-          break;
-      case 20:
-          filterValue = `brightness(${brightness}%) sepia(20%)`;
-          break;
-      case 21:
-          filterValue = `brightness(${brightness}%) sepia(10%)`;
-          break;
-      default:
-          filterValue = `brightness(${brightness}%)`;
+  const brightness = (2/3+Math.sin(3.14/24*hours)/3)*100;
+  if (15<=hours && hours<=21) {
+    filterValue = `brightness(${brightness}%) sepia(${(0.3+Math.sin(hours+2)/5)*100}%)`;
+  } else {
+    filterValue = `brightness(${brightness}%)`;
   }
+  console.log(hours);
 }
 
 function keyDownHandler(e) {
