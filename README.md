@@ -1,3 +1,5 @@
+![Language](https://img.shields.io/github/languages/count/AuttgamesTeam/Autt-Garden)
+![Licence](https://img.shields.io/github/license/AuttgamesTeam/Autt-Garden)
 # AUTT GARDEN
 A project started in march 2023 by [@Claquettes](https://github.com/Claquettes) and [@FlashOnFire](https://github.com/FlashOnFire) from the [AuttGames Team](https://github.com/AuttgamesTeam). It's a calm and relaxing game where you can make your own tiny island/garden. The project is currently hosted on my website [claq.fr/garden](https://claq.fr/garden). Key features include:
   - 150+ 32x32 Tiles , including plants, animals, buildings, cliffs, paths, etc.
